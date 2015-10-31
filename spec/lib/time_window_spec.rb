@@ -40,4 +40,14 @@ describe TimeWindow do
     time_window = TimeWindow.new(['0800-1700'])
     expect(time_window.include?('2015-10-31 19:58:47')).to be_falsy
   end
+
+  it "Test Window - 9: ['0800']" do
+    time_window = TimeWindow.new(['0800'])
+    expect(time_window.include?('2015-10-31 08:00:00')).to be_truthy
+  end
+
+  it "Test Window - 10: ['0800']" do
+    time_window = TimeWindow.new(['0800'])
+    expect(time_window.include?('2015-10-31 08:00:01')).to be_truthy
+  end
 end

@@ -28,14 +28,18 @@ class TimeRange
         add_to_hours(match[1], match[2])
       elsif (match = /([a-zA-Z]{3})-([a-zA-Z]{3})/.match(range))
         add_to_days(match[1], match[2])
-      else
+      elsif /(\d{4})/.match(range)
+        add_to_hours(range, range)
+      elsif /([a-zA-Z]{3})/.match(range)
         add_to_days(range, range)
+      else
+        fail "illegal time range - '#{range}'."
       end
     end
   end
 
   def add_to_hours(start_hour, end_hour)
-    @hours << (start_hour.to_i...end_hour.to_i)
+    @hours << (start_hour.to_i..end_hour.to_i)
   end
 
   def add_to_days(start_, end_)
