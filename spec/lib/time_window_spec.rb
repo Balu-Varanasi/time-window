@@ -16,8 +16,28 @@ describe TimeWindow do
     expect(time_window.include?('2015-05-07 20:10:40')).to be_truthy
   end
 
-  it "Test Window - 1: ['Mon-Fri 0800-1700', '0800-1700']" do
+  it "Test Window - 4: ['Mon-Fri 0800-1700']" do
     time_window = TimeWindow.new(['Mon-Fri 0800-1700'])
     expect(time_window.include?('2015-10-31 11:58:47')).to be_falsy
+  end
+
+  it "Test Window - 5: ['Mon']" do
+    time_window = TimeWindow.new(['Mon'])
+    expect(time_window.include?('2015-10-31 11:58:47')).to be_falsy
+  end
+
+  it "Test Window - 6: ['Mon']" do
+    time_window = TimeWindow.new(['Sat'])
+    expect(time_window.include?('2015-10-31 11:58:47')).to be_truthy
+  end
+
+  it "Test Window - 7: ['0800-1700']" do
+    time_window = TimeWindow.new(['0800-1700'])
+    expect(time_window.include?('2015-10-31 11:58:47')).to be_truthy
+  end
+
+  it "Test Window - 8: ['0800-1700']" do
+    time_window = TimeWindow.new(['0800-1700'])
+    expect(time_window.include?('2015-10-31 19:58:47')).to be_falsy
   end
 end

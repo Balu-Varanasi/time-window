@@ -43,8 +43,10 @@ class TimeRange
     end_day = DAY_NAMES.index(end_)
     if start_day < end_day
       @days << (start_day..end_day)
+    elsif start_day == end_day
+      @days << (start_day..end_day)
     else
-      @days << (start_day..(Time::RFC2822_DAY_NAME.size - 1))
+      @days << (start_day..(DAY_NAMES.size - 1))
       @days << (0..end_day)
     end
   end
