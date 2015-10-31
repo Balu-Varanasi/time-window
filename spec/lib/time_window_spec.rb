@@ -15,4 +15,9 @@ describe TimeWindow do
     time_window = TimeWindow.new([])
     expect(time_window.include?('2015-05-07 20:10:40')).to be_truthy
   end
+
+  it "Test Window - 1: ['Mon-Fri 0800-1700', '0800-1700']" do
+    time_window = TimeWindow.new(['Mon-Fri 0800-1700'])
+    expect(time_window.include?('2015-10-31 11:58:47')).to be_falsy
+  end
 end

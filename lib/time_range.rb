@@ -27,7 +27,7 @@ class TimeRange
       if (match = /(\d{4})-(\d{4})/.match(range))
         add_to_hours(match[1], match[2])
       elsif (match = /([a-zA-Z]{3})-([a-zA-Z]{3})/.match(range))
-        add_to_days(match[1], match[1])
+        add_to_days(match[1], match[2])
       else
         add_to_days(range, range)
       end
