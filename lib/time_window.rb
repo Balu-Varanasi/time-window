@@ -1,6 +1,3 @@
-require 'time'
-require 'time_range'
-
 # TimeWindow
 class TimeWindow
   def initialize(time_range_strings = [])
